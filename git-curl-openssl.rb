@@ -13,11 +13,8 @@ class Git < Formula
 
   depends_on "gettext"
   depends_on "pcre2"
-
-  if MacOS.version < :yosemite
-    depends_on "openssl@1.1"
-    depends_on "curl"
-  end
+  depends_on "openssl@1.1"
+  depends_on "curl-openssl"
 
   resource "html" do
     url "https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.24.1.tar.xz"
@@ -75,12 +72,8 @@ class Git < Formula
       LDFLAGS=#{ENV.ldflags}
     ]
 
-    if MacOS.version < :yosemite
-      openssl_prefix = Formula["openssl@1.1"].opt_prefix
-      args += %W[NO_APPLE_COMMON_CRYPTO=1 OPENSSLDIR=#{openssl_prefix}]
-    else
-      args += %w[NO_OPENSSL=1 APPLE_COMMON_CRYPTO=1]
-    end
+    openssl_prefix = Formula["openssl@1.1"].opt_prefix
+    args += %W[NO_APPLE_COMMON_CRYPTO=1 OPENSSLDIR=#{openssl_prefix}]
 
     system "make", "install", *args
 
