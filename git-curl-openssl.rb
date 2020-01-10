@@ -1,4 +1,4 @@
-class Git < Formula
+class GitCurlOpenssl < Formula
   desc "Distributed revision control system"
   homepage "https://git-scm.com"
   url "https://www.kernel.org/pub/software/scm/git/git-2.24.1.tar.xz"
