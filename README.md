@@ -8,7 +8,15 @@ This formula allows git to connect to https with TLSv1.3.
 
 ## Installation
 
+Uninstall `git` if you have it installed already to allow linking this formula:
+
+```shell
+brew uninstall git
+```
+
+Install this formula and build it from source with `curl-openssl`:
+
 ```shell
 brew tap mschoettle/git-curl-openssl
-brew install git-curl-openssl
+brew install -s git-curl-openssl
 ```
